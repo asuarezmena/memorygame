@@ -118,9 +118,15 @@ function verificar(){
         }else{
 
             alert("Incorrecto. Intenta nuevamente");
-            iniciarNivel();
-
+        
+            document.getElementById("numero").innerText = numeroActual;
+        
+            setTimeout(()=>{
+                document.getElementById("numero").innerText="???";
+            }, tiempoNivel());
+        
         }
+
     }
 }
 
