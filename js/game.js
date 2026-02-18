@@ -26,6 +26,7 @@ async function cargarRanking(){
 
 
     const rankingBox = document.getElementById("ranking");
+    rankingBox.innerHTML = "";
  
 
     console.log(lista); // para verificar
