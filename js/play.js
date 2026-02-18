@@ -94,4 +94,19 @@ function pintarVidas(){
 
 
 
+
+window.addEventListener("load", () => {
+    const preStart = document.getElementById("preStart");
+    if(preStart){
+        iniciarCuentaAtras(()=>{
+            preStart.style.display = "none";
+            iniciarNivel();  // aquí inicia tu nivel real
+        });
+    } else {
+        iniciarNivel();
+    }
+});
+
+
+
 iniciarNivel();
