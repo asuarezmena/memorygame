@@ -4,28 +4,6 @@
 <meta charset="UTF-8">
 <title>Mapa</title>
 <link rel="stylesheet" href="css/style.css">
-<style>
-.map{
-    display:grid;
-    grid-template-columns: repeat(5,60px);
-    gap:20px;
-}
-
-.node{
-    width:60px;
-    height:60px;
-    background:#7c3aed;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    cursor:pointer;
-}
-
-.active{
-    background:#00f2ff;
-}
-</style>
 </head>
 <body>
 
@@ -33,17 +11,7 @@
 
     <div class="map-area">
         <h2 id="userName"></h2>
-
-        <svg viewBox="0 0 600 900" class="path">
-            <path d="M100 50 
-                     C 500 150, 100 300, 500 400
-                     C 100 500, 500 650, 100 800"
-                  stroke="#00f2ff"
-                  stroke-width="8"
-                  fill="none"/>
-        </svg>
-
-        <div id="nodes"></div>
+        <div id="nodes" class="map-grid"></div>
     </div>
 
     <div class="ranking-area">
@@ -54,6 +22,6 @@
 </div>
 
 <script src="js/api.js"></script>
-<script src="js/game.js?v=2"></script>
+<script src="js/game.js?v=3"></script>
 </body>
 </html>
