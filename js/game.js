@@ -4,29 +4,7 @@ document.getElementById("userName").innerText =
 "Jugador: " + localStorage.getItem("user");
 
 
-function iniciarCuentaAtras(callback){
 
-    const contador = document.getElementById("contador");
-    const pantalla = document.getElementById("preStart");
-
-    if(!contador || !pantalla) return; // ← evita error si no existe
-
-    let tiempo = 5;
-    contador.innerText = tiempo;
-
-    const intervalo = setInterval(()=>{
-
-        tiempo--;
-        contador.innerText = tiempo;
-
-        if(tiempo <= 0){
-            clearInterval(intervalo);
-            pantalla.style.display = "none";
-            callback();
-        }
-
-    },1000);
-}
 
 
 
