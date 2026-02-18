@@ -6,10 +6,12 @@ async function login(){
 
     const res = await fetch(API,{
         method:"POST",
-        body:JSON.stringify({
-            action:"login",
-            username,
-            password
+        body: new URLSearchParams({
+            data: JSON.stringify({
+                action:"login",
+                username:username,
+                password:password
+            })
         })
     });
 
@@ -29,10 +31,12 @@ async function register(){
 
     const res = await fetch(API,{
         method:"POST",
-        body:JSON.stringify({
-            action:"register",
-            username,
-            password
+        body: new URLSearchParams({
+            data: JSON.stringify({
+                action:"register",
+                username:username,
+                password:password
+            })
         })
     });
 
