@@ -23,7 +23,8 @@ async function cargarRanking(){
 
     console.log(data);
     console.log(typeof data);
-    data.forEach(r=>{
+    const lista = data.data || data;   // si viene envuelto en "data"
+    lista.forEach(r=>{
         rankingBox.innerHTML += r[0] + " - Nivel " + r[2] + "<br>";
     });
 }
