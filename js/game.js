@@ -7,23 +7,25 @@ document.getElementById("userName").innerText =
 
 async function cargarRanking(){
 
-    const modo = localStorage.getItem("modo");
+    const modo = localStorage.getItem("mode");
 
-    const res = await fetch(
-        API + "?action=getRanking&modo=" + encodeURIComponent(modo)
-    );
+    const url =
+        API +
+        "?action=getRanking" +
+        "&modo=" + encodeURIComponent(modo);
+
+    const res = await fetch(url);   // GET (ya no POST)
 
     const data = await res.json();
 
-    const box = document.getElementById("ranking");
-    box.innerHTML="";
+    const rankingBox = document.getElementById("ranking");
+    rankingBox.innerHTML = "<h3>Ranking</h3>";
 
     data.forEach(r=>{
-        const li=document.createElement("div");
-        li.textContent = r[0]+" - Nivel "+r[2];
-        box.appendChild(li);
+        rankingBox.innerHTML += r[0] + " - Nivel " + r[2] + "<br>";
     });
 }
+
 
 
 
