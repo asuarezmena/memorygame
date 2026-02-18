@@ -1,4 +1,4 @@
-const API = "https://script.google.com/macros/s/AKfycbwXAji7P0rsVF4To1M4_KPJSXHgV5qBajNsG4YFzFAsmldL_Oi6l7P3UU7vsR2Kwl84/exec"; 
+
 let nivel = parseInt(localStorage.getItem("level")) || 1;
 let modo = localStorage.getItem("mode");
 
