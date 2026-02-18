@@ -21,6 +21,8 @@ async function cargarRanking(){
     const rankingBox = document.getElementById("ranking");
     rankingBox.innerHTML = "<h3>Ranking</h3>";
 
+    console.log(data);
+    console.log(typeof data);
     data.forEach(r=>{
         rankingBox.innerHTML += r[0] + " - Nivel " + r[2] + "<br>";
     });
