@@ -33,7 +33,7 @@ async function cargarRanking(){
 
 
 
-
+ 
 
 const posiciones = [
  [100,50],[300,120],[500,180],[420,260],[200,320],
