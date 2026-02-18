@@ -4,6 +4,30 @@ document.getElementById("userName").innerText =
 "Jugador: " + localStorage.getItem("user");
 
 
+function iniciarCuentaAtras(callback){
+
+    let tiempo = 5;
+    const contador = document.getElementById("contador");
+    const pantalla = document.getElementById("preStart");
+
+    contador.innerText = tiempo;
+
+    const intervalo = setInterval(()=>{
+
+        tiempo--;
+        contador.innerText = tiempo;
+
+        if(tiempo <= 0){
+            clearInterval(intervalo);
+            pantalla.style.display = "none";
+            callback(); // aquí inicia el juego
+        }
+
+    },1000);
+}
+
+
+
 
 async function cargarRanking(){
 
