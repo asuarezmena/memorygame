@@ -6,10 +6,12 @@ document.getElementById("userName").innerText =
 
 function iniciarCuentaAtras(callback){
 
-    let tiempo = 5;
     const contador = document.getElementById("contador");
     const pantalla = document.getElementById("preStart");
 
+    if(!contador || !pantalla) return; // ← evita error si no existe
+
+    let tiempo = 5;
     contador.innerText = tiempo;
 
     const intervalo = setInterval(()=>{
@@ -20,11 +22,12 @@ function iniciarCuentaAtras(callback){
         if(tiempo <= 0){
             clearInterval(intervalo);
             pantalla.style.display = "none";
-            callback(); // aquí inicia el juego
+            callback();
         }
 
     },1000);
 }
+
 
 
 
