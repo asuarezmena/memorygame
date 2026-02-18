@@ -88,18 +88,12 @@ button{
 
 
 
-.prestart{
-    position: fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:#000;
-    color:#fff;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    font-size:40px;
-    z-index:9999;
+.prestart {
+    position: relative;
+    background: rgba(0,0,0,0.5); /* semi-transparente para ver */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 40px;
 }
+
