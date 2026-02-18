@@ -15,33 +15,43 @@ async function cargarRanking(){
 
     const modo = localStorage.getItem("mode");
 
-    const url =
-        API +
-        "?action=getRanking" +
-        "&modo=" + encodeURIComponent(modo);
+    const res = await fetch(
+        API + "?action=getRanking&modo=" + encodeURIComponent(modo)
+    );
 
-    const res = await fetch(url);
     const data = await res.json();
     const lista = data.data;
 
-
     const rankingBox = document.getElementById("ranking");
-    rankingBox.innerHTML = "";
- 
+    rankingBox.innerHTML = "<h3>Ranking ("+modo+")</h3>";
 
-    console.log(lista); // para verificar
-
-    // ← Aquí agregamos el mensaje si no hay jugadores
-    if(lista.length === 0){
-        rankingBox.innerHTML += "¡Sé el primero en jugar!";
-        return; // salimos porque no hay datos que mostrar
+    if(!Array.isArray(lista) || lista.length==0){
+        rankingBox.innerHTML += "No hay jugadores aún";
+        return;
     }
 
-    if(!Array.isArray(lista)) return;  
-    lista.forEach(r=>{
-        rankingBox.innerHTML += r[0] + " - Nivel " + r[2] + "<br>";
+    let html = `
+    <table style="width:100%; font-size:14px;">
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Nivel</th>
+      </tr>
+    `;
+
+    lista.forEach((r,index)=>{
+        html += `
+          <tr>
+            <td>u${("000"+(index+1)).slice(-3)}</td>
+            <td>${r[0]}</td>
+            <td>${r[2]}</td>
+          </tr>
+        `;
     });
 
+    html += "</table>";
+
+    rankingBox.innerHTML += html;
 }
 
 
