@@ -45,21 +45,24 @@ button{
 }
 
 .map-area{
- position:relative;
- width:600px;
- height:1100px;
+ width:500px;
 }
 
 
-.path{
- position:absolute;
+.map-grid{
+ display:grid;
+ grid-template-columns: repeat(5, 80px);
+ gap:20px;
+ justify-content:center;
+ margin-top:20px;
 }
+
 
 .node{
- position:absolute;
- width:45px;
- height:45px;
- border-radius:50%;
+ position:static;        /* antes era absolute */
+ width:80px;
+ height:80px;
+ border-radius:12px;     /* cuadrado con bordes redondeados */
  background:#7c3aed;
  display:flex;
  justify-content:center;
@@ -69,6 +72,7 @@ button{
  font-weight:bold;
  box-shadow:0 0 10px #7c3aed;
 }
+
 
 .node.active{
  background:#00f2ff;
