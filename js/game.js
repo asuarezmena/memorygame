@@ -7,24 +7,24 @@ document.getElementById("userName").innerText =
 
 async function cargarRanking(){
 
- const res = await fetch(API,{
-   method:"POST",
-   body:JSON.stringify({
-     action:"getRanking",
-     modo:localStorage.getItem("mode")
-   })
- });
+    const modo = localStorage.getItem("modo");
 
- const data = await res.json();
+    const res = await fetch(
+        API + "?action=getRanking&modo=" + encodeURIComponent(modo)
+    );
 
- let html = "<h3>Ranking</h3>";
+    const data = await res.json();
 
- data.forEach(r=>{
-   html += r[0]+" - Nivel "+r[2]+"<br>";
- });
+    const box = document.getElementById("ranking");
+    box.innerHTML="";
 
- document.getElementById("ranking").innerHTML = html;
+    data.forEach(r=>{
+        const li=document.createElement("div");
+        li.textContent = r[0]+" - Nivel "+r[2];
+        box.appendChild(li);
+    });
 }
+
 
 
 
