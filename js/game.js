@@ -55,7 +55,7 @@ const posiciones = [
  [100,1000],[300,1060],[500,1120],[350,1180],[200,1240]
 ];
 
-const cont = document.getElementById("nodes");
+const cont = document.getElementById("node");
 
 for(let i=1;i<=20;i++){
 
