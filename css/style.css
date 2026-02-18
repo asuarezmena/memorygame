@@ -47,8 +47,9 @@ button{
 .map-area{
  position:relative;
  width:600px;
- height:900px;
+ height:1100px;
 }
+
 
 .path{
  position:absolute;
