@@ -21,7 +21,9 @@ async function cargarRanking(){
         "&modo=" + encodeURIComponent(modo);
 
     const res = await fetch(url);
-    const lista = await res.json(); // directamente el array
+    const data = await res.json();
+    const lista = data.data;
+
 
     const rankingBox = document.getElementById("ranking");
     rankingBox.innerHTML = "<h3>Ranking</h3>";
