@@ -35,3 +35,48 @@ button{
     font-weight:bold;
     cursor:pointer;
 }
+
+
+
+
+.container{
+ display:flex;
+ gap:40px;
+}
+
+.map-area{
+ position:relative;
+ width:600px;
+ height:900px;
+}
+
+.path{
+ position:absolute;
+}
+
+.node{
+ position:absolute;
+ width:45px;
+ height:45px;
+ border-radius:50%;
+ background:#7c3aed;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ cursor:pointer;
+ color:white;
+ font-weight:bold;
+ box-shadow:0 0 10px #7c3aed;
+}
+
+.node.active{
+ background:#00f2ff;
+ box-shadow:0 0 20px #00f2ff;
+}
+
+.ranking-area{
+ width:250px;
+ background:#111827;
+ padding:20px;
+ border-radius:15px;
+}
