@@ -1,4 +1,4 @@
-const API = "https://script.google.com/macros/s/AKfycbwgKBahWpCPTTlXuLaIVCQ4Vc9GMHSohwy8g1rukv9FUvS5CYCFnBknNxaDHJ2h1elu/exec";
+const API = "https://script.google.com/macros/s/AKfycbwgKBahWpCPTTlXuLaIVCQ4Vc9GMHSohwy8g1rukv9FUvS5CYCFnBknNxaDHJ2h1elu/exec"; 
 
 async function login(){
     const username = document.getElementById("user").value;
