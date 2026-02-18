@@ -41,21 +41,21 @@ async function cargarRanking(){
         "?action=getRanking" +
         "&modo=" + encodeURIComponent(modo);
 
-    const res = await fetch(url);   // GET (ya no POST)
-
-    const data = await res.json();
+    const res = await fetch(url);
+    const lista = await res.json(); // directamente el array
 
     const rankingBox = document.getElementById("ranking");
     rankingBox.innerHTML = "<h3>Ranking</h3>";
 
-    console.log(data);
-    const lista = data.data;
-    if(!Array.isArray(lista)) return;   // evita errores si viene vacío
+    console.log(lista); // para verificar
+
+    if(!Array.isArray(lista)) return;  
     lista.forEach(r=>{
         rankingBox.innerHTML += r[0] + " - Nivel " + r[2] + "<br>";
     });
 
 }
+
 
 
 
