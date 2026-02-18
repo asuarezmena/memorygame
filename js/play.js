@@ -7,6 +7,45 @@ let numeroActual = "";
 document.getElementById("nivel").innerText =
 "Nivel " + nivel;
 
+
+
+function iniciarCuentaAtras(callback){
+    const contador = document.getElementById("contador");
+    const pantalla = document.getElementById("preStart");
+
+    if(!contador || !pantalla) return;
+
+    let tiempo = 5;
+    contador.innerText = tiempo;
+
+    const intervalo = setInterval(()=>{
+        tiempo--;
+        contador.innerText = tiempo;
+
+        if(tiempo <= 0){
+            clearInterval(intervalo);
+            pantalla.style.display = "none";
+            callback();
+        }
+
+    },1000);
+}
+
+// ---- después va el load ----
+window.addEventListener("load", () => {
+    const preStart = document.getElementById("preStart");
+    if(preStart){
+        iniciarCuentaAtras(()=>{
+            preStart.style.display = "none";
+            iniciarNivel();
+        });
+    } else {
+        iniciarNivel();
+    }
+});
+
+
+
 function generarNumero(){
 
     let digits = 3;
@@ -95,17 +134,6 @@ function pintarVidas(){
 
 
 
-window.addEventListener("load", () => {
-    const preStart = document.getElementById("preStart");
-    if(preStart){
-        iniciarCuentaAtras(()=>{
-            preStart.style.display = "none";
-            iniciarNivel();  // aquí inicia tu nivel real
-        });
-    } else {
-        iniciarNivel();
-    }
-});
 
 
 
