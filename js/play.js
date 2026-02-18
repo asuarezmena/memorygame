@@ -105,29 +105,30 @@ function verificar(){
     }else{
 
         vidas--;
-
+        pintarVidas(); // ← ACTUALIZA VISUALMENTE
+    
         if(vidas==0){
-
+    
             alert("Perdiste el nivel");
-
+    
             nivel = Math.max(1,nivel-1);
             localStorage.setItem("level",nivel);
-
+    
             window.location="map.html";
-
+    
         }else{
-
+    
             alert("Incorrecto. Intenta nuevamente");
-        
+    
             document.getElementById("numero").innerText = numeroActual;
-        
+    
             setTimeout(()=>{
                 document.getElementById("numero").innerText="???";
             }, tiempoNivel());
-        
+    
         }
-
     }
+
 }
 
 function pintarVidas(){
