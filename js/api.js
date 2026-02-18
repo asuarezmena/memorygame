@@ -18,3 +18,25 @@ async function login(){
         alert("Login incorrecto");
     }
 }
+
+
+async function register(){
+
+    const username = document.getElementById("user").value;
+    const password = document.getElementById("pass").value;
+
+    const res = await fetch(
+        API + "?action=register" +
+        "&username=" + encodeURIComponent(username) +
+        "&password=" + encodeURIComponent(password)
+    );
+
+    const data = await res.json();
+
+    if(data.status=="ok"){
+        alert("Usuario creado correctamente");
+        window.location="index.html";
+    }else{
+        alert(data.message || "Error al registrar");
+    }
+}
