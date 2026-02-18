@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Menú</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="card">
+<h2>Selecciona modo</h2>
+
+<button onclick="play('facil')">Modo Fácil</button>
+<br><br>
+<button onclick="play('medio')">Modo Intermedio</button>
+<br><br>
+<button onclick="play('dificil')">Modo Difícil</button>
+
+</div>
+
+<script>
+function play(mode){
+    localStorage.setItem("mode",mode);
+    window.location="map.html";
+}
+</script>
+
+</body>
+</html>
