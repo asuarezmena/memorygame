@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mapa</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.map{
+    display:grid;
+    grid-template-columns: repeat(5,60px);
+    gap:20px;
+}
+
+.node{
+    width:60px;
+    height:60px;
+    background:#7c3aed;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+}
+
+.active{
+    background:#00f2ff;
+}
+</style>
+</head>
+<body>
+
+<div>
+<h2 id="userName"></h2>
+<div class="map" id="map"></div>
+</div>
+
+<script src="js/game.js"></script>
+</body>
+</html>
