@@ -26,7 +26,7 @@ async function cargarRanking(){
 
 
     const rankingBox = document.getElementById("ranking");
-    rankingBox.innerHTML = "<h3>Ranking</h3>";
+ 
 
     console.log(lista); // para verificar
 
