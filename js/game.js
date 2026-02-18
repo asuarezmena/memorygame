@@ -23,7 +23,7 @@ async function cargarRanking(){
     const lista = data.data;
 
     const rankingBox = document.getElementById("ranking");
-    rankingBox.innerHTML = "<h3>Ranking ("+modo+")</h3>";
+    rankingBox.innerHTML = "<h3>Ranking (Modo - "+modo+")</h3>";
 
     if(!Array.isArray(lista) || lista.length==0){
         rankingBox.innerHTML += "No hay jugadores aún";
