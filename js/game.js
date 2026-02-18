@@ -49,11 +49,12 @@ async function cargarRanking(){
     rankingBox.innerHTML = "<h3>Ranking</h3>";
 
     console.log(data);
-    console.log(typeof data);
-    const lista = data.data || data;   // si viene envuelto en "data"
+    const lista = data.data;
+    if(!Array.isArray(lista)) return;   // evita errores si viene vacío
     lista.forEach(r=>{
         rankingBox.innerHTML += r[0] + " - Nivel " + r[2] + "<br>";
     });
+
 }
 
 
