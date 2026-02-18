@@ -30,6 +30,7 @@ function iniciarNivel(){
     "Vidas: " + vidas;
 
     generarNumero();
+    pintarVidas();
 
     document.getElementById("numero").innerText = numeroActual;
 
@@ -82,5 +83,15 @@ function verificar(){
         }
     }
 }
+
+function pintarVidas(){
+ let html="";
+ for(let i=0;i<vidas;i++){
+   html+="❤️ ";
+ }
+ document.getElementById("vidas").innerHTML=html;
+}
+
+
 
 iniciarNivel();
