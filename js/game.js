@@ -67,22 +67,34 @@ const cont = document.getElementById("nodes");
 
 for(let i=1;i<=20;i++){
 
- const node = document.createElement("div");
- node.className="node";
- node.innerText=i;
+  const node = document.createElement("div");
+  node.className="node";
+  node.innerText=i;
 
- if(i==nivelActual){
-   node.classList.add("active");
- }
+  // NIVEL PASADO
+  if(i < nivelActual){
+    node.classList.add("completed");
+  }
 
- node.onclick = ()=>{
-   if(i==nivelActual){
-     localStorage.setItem("level",i);
-     window.location="game.html";
-   }
- }
+  // NIVEL ACTUAL
+  if(i == nivelActual){
+    node.classList.add("active");
+  }
 
- cont.appendChild(node);
+  // NIVEL BLOQUEADO
+  if(i > nivelActual){
+    node.classList.add("locked");
+  }
+
+  // Permitir entrar solo si no está bloqueado
+  if(i <= nivelActual){
+    node.onclick = ()=>{
+      localStorage.setItem("level", i);
+      window.location="game.html";
+    }
+  }
+
+  cont.appendChild(node);
 }
 
 
