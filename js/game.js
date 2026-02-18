@@ -1,14 +1,41 @@
-let nivelActual = 1;
+let nivelActual = parseInt(localStorage.getItem("level")) || 1;
+
+document.getElementById("userName").innerText =
+"Jugador: " + localStorage.getItem("user");
+
+
+
+async function cargarRanking(){
+
+ const res = await fetch(API,{
+   method:"POST",
+   body:JSON.stringify({
+     action:"getRanking",
+     modo:localStorage.getItem("mode")
+   })
+ });
+
+ const data = await res.json();
+
+ let html = "<h3>Ranking</h3>";
+
+ data.forEach(r=>{
+   html += r[0]+" - Nivel "+r[2]+"<br>";
+ });
+
+ document.getElementById("ranking").innerHTML = html;
+}
+
+
+
 
 
 const posiciones = [
- [100,50],[300,100],[500,150],[420,200],[200,250],
- [120,300],[300,350],[500,400],[420,450],[200,500],
- [120,550],[300,600],[500,650],[420,700],[200,750],
- [100,800],[300,850],[500,900],[350,950],[200,1000]
+ [100,50],[300,120],[500,180],[420,260],[200,320],
+ [120,400],[300,460],[500,520],[420,600],[200,660],
+ [120,740],[300,800],[500,850],[420,900],[200,950],
+ [100,1000],[300,1060],[500,1120],[350,1180],[200,1240]
 ];
-
-
 
 const cont = document.getElementById("nodes");
 
@@ -37,51 +64,11 @@ for(let i=1;i<=20;i++){
 
 
 
-document.getElementById("userName").innerText =
-"Jugador: " + localStorage.getItem("user");
-
-const map = document.getElementById("map");
-
-for(let i=1;i<=20;i++){
-    const node = document.createElement("div");
-    node.className="node";
-    node.innerText=i;
-
-    if(i==nivelActual){
-        node.classList.add("active");
-    }
-
-    node.onclick = ()=>{
-        if(i==nivelActual){
-            localStorage.setItem("level",i);
-            window.location="game.html";
-        }
-    }
-
-    map.appendChild(node);
-}
 
 
-async function cargarRanking(){
 
- const res = await fetch(API,{
-   method:"POST",
-   body:JSON.stringify({
-     action:"getRanking",
-     modo:localStorage.getItem("mode")
-   })
- });
 
- const data = await res.json();
 
- let html = "<h3>Ranking</h3>";
-
- data.forEach(r=>{
-   html += r[0]+" - Nivel "+r[2]+"<br>";
- });
-
- document.getElementById("ranking").innerHTML = html;
-}
 
 
 
