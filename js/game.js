@@ -1,6 +1,6 @@
 
 let nivelActual = parseInt(localStorage.getItem("level")) || 1;
-
+ 
 document.getElementById("userName").innerText =
 "Jugador: " + localStorage.getItem("user");
 
