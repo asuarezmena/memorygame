@@ -28,6 +28,12 @@ async function cargarRanking(){
 
     console.log(lista); // para verificar
 
+    // ← Aquí agregamos el mensaje si no hay jugadores
+    if(lista.length === 0){
+        rankingBox.innerHTML += "¡Sé el primero en jugar!";
+        return; // salimos porque no hay datos que mostrar
+    }
+
     if(!Array.isArray(lista)) return;  
     lista.forEach(r=>{
         rankingBox.innerHTML += r[0] + " - Nivel " + r[2] + "<br>";
