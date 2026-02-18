@@ -23,3 +23,28 @@ for(let i=1;i<=20;i++){
 
     map.appendChild(node);
 }
+
+
+async function cargarRanking(){
+
+ const res = await fetch(API,{
+   method:"POST",
+   body:JSON.stringify({
+     action:"getRanking",
+     modo:localStorage.getItem("mode")
+   })
+ });
+
+ const data = await res.json();
+
+ let html = "<h3>Ranking</h3>";
+
+ data.forEach(r=>{
+   html += r[0]+" - Nivel "+r[2]+"<br>";
+ });
+
+ document.getElementById("ranking").innerHTML = html;
+}
+
+setInterval(cargarRanking,3000);
+cargarRanking();
