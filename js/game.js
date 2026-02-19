@@ -86,8 +86,8 @@ for(let i=1;i<=20;i++){
     node.classList.add("locked");
   }
 
-  // Permitir entrar solo si no está bloqueado
-  if(i <= nivelActual){
+  // Permitir entrar solo al nivel actual
+  if(i == nivelActual){
     node.onclick = ()=>{
       localStorage.setItem("level", i);
       window.location="game.html";
