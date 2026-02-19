@@ -175,8 +175,8 @@ function verificar(){
     }else{
 
         vidas--;
-        pintarVidas(); // ← ACTUALIZA VISUALMENTE
-    
+        pintarVidas();
+        
         if(vidas==0){
     
             alert("Perdiste el nivel");
@@ -190,14 +190,15 @@ function verificar(){
     
             alert("Incorrecto. Intenta nuevamente");
     
-            document.getElementById("numero").innerText = numeroActual;
+            document.getElementById("respuesta").value = "";
     
-            setTimeout(()=>{
-                document.getElementById("numero").innerText="???";
-            }, tiempoNivel());
+            // 🔥 Volver a mostrar la misma secuencia
+            const config = obtenerConfiguracionNivel();
+            mostrarSecuencia(config);
     
         }
     }
+
 
 }
 
