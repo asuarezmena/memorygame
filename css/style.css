@@ -157,6 +157,7 @@ button:hover{
     background:var(--ranking-bg);
     padding:20px;
     border-radius:15px;
+    text-align:center;
 }
 
 /* ========================= */
