@@ -30,5 +30,5 @@ function showModal(message, type = "normal") {
 
     setTimeout(() => {
         modal.classList.remove("show");
-    }, 2000); // 2 segundos
+    }, 3000); // 2 segundos
 }
