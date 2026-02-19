@@ -1,4 +1,17 @@
 /* ========================= */
+/* 🧱 RESET GLOBAL */
+/* ========================= */
+
+*{
+    box-sizing:border-box;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+}
+
+/* ========================= */
 /* 🎨 VARIABLES DE COLOR */
 /* ========================= */
 
@@ -35,12 +48,16 @@ body.female{
 
 body{
     margin:0;
-    font-family:Arial;
+    font-family:Arial, sans-serif;
     background:var(--bg-main);
     color:var(--text-color);
     padding-top:70px;
     min-height:100vh;
 }
+
+/* ========================= */
+/* 🪪 CARD */
+/* ========================= */
 
 .card{
     background:var(--card-bg);
@@ -48,7 +65,9 @@ body{
     border-radius:15px;
     box-shadow:0 0 25px var(--primary);
     text-align:center;
-    width:300px;
+    width:100%;
+    max-width:350px;
+    margin:auto;
 }
 
 input{
@@ -68,6 +87,11 @@ button{
     font-weight:bold;
     cursor:pointer;
     color:white;
+    transition:0.3s;
+}
+
+button:hover{
+    opacity:0.85;
 }
 
 /* ========================= */
@@ -75,59 +99,64 @@ button{
 /* ========================= */
 
 .container{
- display:flex;
- gap:40px;
- flex-wrap:wrap;
+    display:flex;
+    gap:40px;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:flex-start;
+    padding:20px;
 }
 
 .map-area{
- width:500px;
+    width:100%;
+    max-width:500px;
 }
 
 .map-grid{
- display:grid;
- grid-template-columns: repeat(5, 80px);
- gap:20px;
- justify-content:center;
- margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(60px, 1fr));
+    gap:15px;
+    margin-top:20px;
 }
 
 .node{
- width:80px;
- height:80px;
- border-radius:12px;
- background:var(--node);
- display:flex;
- justify-content:center;
- align-items:center;
- cursor:pointer;
- color:white;
- font-weight:bold;
- box-shadow:0 0 10px var(--node);
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:12px;
+    background:var(--node);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    color:white;
+    font-weight:bold;
+    box-shadow:0 0 10px var(--node);
+    transition:0.3s;
 }
 
 .node.active{
- background:var(--node-active);
- box-shadow:0 0 20px var(--node-active);
+    background:var(--node-active);
+    box-shadow:0 0 20px var(--node-active);
 }
 
 .node.completed{
- background:var(--node-completed);
- box-shadow:0 0 10px var(--node-completed);
+    background:var(--node-completed);
+    box-shadow:0 0 10px var(--node-completed);
 }
 
 .node.locked{
- background:var(--node-locked);
- box-shadow:none;
- cursor:not-allowed;
- opacity:0.6;
+    background:var(--node-locked);
+    box-shadow:none;
+    cursor:not-allowed;
+    opacity:0.6;
 }
 
 .ranking-area{
- width:250px;
- background:var(--ranking-bg);
- padding:20px;
- border-radius:15px;
+    width:100%;
+    max-width:300px;
+    background:var(--ranking-bg);
+    padding:20px;
+    border-radius:15px;
 }
 
 /* ========================= */
@@ -135,7 +164,7 @@ button{
 /* ========================= */
 
 .prestart{
-    position: fixed;
+    position:fixed;
     top:0;
     left:0;
     width:100%;
@@ -148,6 +177,8 @@ button{
     align-items:center;
     font-size:40px;
     z-index:9999;
+    text-align:center;
+    padding:20px;
 }
 
 /* ========================= */
@@ -164,6 +195,7 @@ button{
     top:0;
     left:0;
     width:100%;
+    z-index:1000;
 }
 
 .top-bar button{
@@ -174,6 +206,56 @@ button{
     color:white;
 }
 
+/* ========================= */
+/* 📦 CONTENIDO */
+/* ========================= */
+
 .contenido{
     padding:20px;
+}
+
+/* ========================= */
+/* 📱 RESPONSIVE */
+/* ========================= */
+
+@media (max-width:768px){
+
+    .container{
+        flex-direction:column;
+        align-items:center;
+        gap:30px;
+    }
+
+    .map-grid{
+        gap:10px;
+    }
+
+    .card{
+        padding:25px;
+    }
+
+    .top-bar{
+        padding:10px;
+    }
+
+    .contenido{
+        padding:15px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .map-grid{
+        grid-template-columns:repeat(auto-fit, minmax(50px, 1fr));
+    }
+
+    .node{
+        font-size:14px;
+    }
+
+    .prestart{
+        font-size:28px;
+    }
+
 }
