@@ -162,16 +162,23 @@ function verificar(){
             modo:localStorage.getItem("mode"),
             level:nivel
           }))
+        })
+        .then(res => res.json())
+        .then(data => {
+    
+            alert("Correcto!");
+    
+            nivel++;
+            localStorage.setItem("level",nivel);
+    
+            window.location="map.html";
+    
+        })
+        .catch(err=>{
+            console.error(err);
+            alert("Error al actualizar nivel");
         });
-
-
-        alert("Correcto!");
-
-        nivel++;
-        localStorage.setItem("level",nivel);
-
-        window.location="map.html";
-
+    
     }else{
 
         vidas--;
