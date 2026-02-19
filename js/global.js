@@ -8,27 +8,34 @@ function cerrarSesion(){
 }
 
 
-function showModal(message, type = "normal") {
+function showModal(message, type = "normal", duration = 2000) {
 
-    const modal = document.getElementById("customModal");
-    const content = document.getElementById("modalContent");
-    const text = document.getElementById("modalMessage");
+    return new Promise((resolve) => {
 
-    text.textContent = message;
+        const modal = document.getElementById("customModal");
+        const content = document.getElementById("modalContent");
+        const text = document.getElementById("modalMessage");
 
-    content.classList.remove("success", "error");
+        text.textContent = message;
 
-    if(type === "success"){
-        content.classList.add("success");
-    }
+        content.classList.remove("success", "error");
 
-    if(type === "error"){
-        content.classList.add("error");
-    }
+        if(type === "success"){
+            content.classList.add("success");
+        }
 
-    modal.classList.add("show");
+        if(type === "error"){
+            content.classList.add("error");
+        }
 
-    setTimeout(() => {
-        modal.classList.remove("show");
-    }, 3000); // 2 segundos
+        modal.classList.add("show");
+
+        setTimeout(() => {
+            modal.classList.remove("show");
+            resolve(); // 🔥 aquí libera el proceso
+        }, duration);
+
+    });
+
 }
+
