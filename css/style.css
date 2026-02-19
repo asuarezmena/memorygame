@@ -1,17 +1,52 @@
+/* ========================= */
+/* 🎨 VARIABLES DE COLOR */
+/* ========================= */
+
+:root{
+    --bg-main: linear-gradient(135deg,#020617,#0f172a);
+    --text-color:white;
+    --card-bg:#111827;
+    --primary:#00f2ff;
+    --node:#7c3aed;
+    --node-active:#00f2ff;
+    --node-completed:#16a34a;
+    --node-locked:#374151;
+    --toolbar:#222;
+    --ranking-bg:#111827;
+}
+
+/* 💖 MODO MUJER */
+body.female{
+    --bg-main: linear-gradient(135deg,#3f0d2e,#ff4da6);
+    --text-color:white;
+    --card-bg:#4b1135;
+    --primary:#ff66b2;
+    --node:#ff4da6;
+    --node-active:#ff85c1;
+    --node-completed:#ff1493;
+    --node-locked:#5c2a47;
+    --toolbar:#2a0f1f;
+    --ranking-bg:#4b1135;
+}
+
+/* ========================= */
+/* 🌍 GENERAL */
+/* ========================= */
+
 body{
     margin:0;
     font-family:Arial;
-    background:linear-gradient(135deg,#020617,#0f172a);
-    color:white;
+    background:var(--bg-main);
+    color:var(--text-color);
     padding-top:70px;
     min-height:100vh;
 }
 
 .card{
-    background:#111827;
+    background:var(--card-bg);
     padding:40px;
     border-radius:15px;
-    box-shadow:0 0 25px #00f2ff44;
+    box-shadow:0 0 25px var(--primary);
     text-align:center;
     width:300px;
 }
@@ -29,23 +64,25 @@ button{
     padding:12px;
     border:none;
     border-radius:8px;
-    background:#00f2ff;
+    background:var(--primary);
     font-weight:bold;
     cursor:pointer;
+    color:white;
 }
 
-
-
+/* ========================= */
+/* 🗺 MAPA */
+/* ========================= */
 
 .container{
  display:flex;
  gap:40px;
+ flex-wrap:wrap;
 }
 
 .map-area{
  width:500px;
 }
-
 
 .map-grid{
  display:grid;
@@ -55,51 +92,47 @@ button{
  margin-top:20px;
 }
 
-
 .node{
- position:static;        /* antes era absolute */
  width:80px;
  height:80px;
- border-radius:12px;     /* cuadrado con bordes redondeados */
- background:#7c3aed;
+ border-radius:12px;
+ background:var(--node);
  display:flex;
  justify-content:center;
  align-items:center;
  cursor:pointer;
  color:white;
  font-weight:bold;
- box-shadow:0 0 10px #7c3aed;
+ box-shadow:0 0 10px var(--node);
 }
 
-
 .node.active{
- background:#00f2ff;
- box-shadow:0 0 20px #00f2ff;
+ background:var(--node-active);
+ box-shadow:0 0 20px var(--node-active);
 }
 
 .node.completed{
- background:#16a34a;
- box-shadow:0 0 10px #16a34a;
+ background:var(--node-completed);
+ box-shadow:0 0 10px var(--node-completed);
 }
 
 .node.locked{
- background:#374151;
+ background:var(--node-locked);
  box-shadow:none;
  cursor:not-allowed;
  opacity:0.6;
 }
 
-
-
-
 .ranking-area{
  width:250px;
- background:#111827;
+ background:var(--ranking-bg);
  padding:20px;
  border-radius:15px;
 }
 
-
+/* ========================= */
+/* ⏳ PANTALLA INICIO */
+/* ========================= */
 
 .prestart{
     position: fixed;
@@ -117,36 +150,30 @@ button{
     z-index:9999;
 }
 
-
+/* ========================= */
+/* 🔝 TOOLBAR */
+/* ========================= */
 
 .top-bar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #222;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 20px;
+    background-color:var(--toolbar);
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
 }
-
 
 .top-bar button{
-    padding: 8px 15px;
-    border: none;
-    border-radius: 6px;
-    background-color: #ff9800;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.top-bar button:hover{
-    opacity: 0.8;
+    width:auto;
+    padding:8px 15px;
+    border-radius:6px;
+    background:var(--primary);
+    color:white;
 }
 
 .contenido{
-    padding: 20px;
+    padding:20px;
 }
-
