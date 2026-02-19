@@ -9,6 +9,11 @@
 
 <div class="container">
 
+    <div style="margin-bottom:10px;">
+      <button onclick="volverMenu()">Volver al menú</button>
+      <button onclick="logout()">Cerrar sesión</button>
+    </div>
+
     <div class="map-area">
         <h2 id="userName"></h2>
         <div id="nodes" class="map-grid"></div>
@@ -19,6 +24,17 @@
     </div>
  
 </div>
+
+<script>
+function volverMenu(){
+  window.location="menu.html";
+}
+
+function logout(){
+  localStorage.clear();
+  window.location="index.html";
+}
+</script>
 
 <script src="js/api.js"></script>
 <script src="js/game.js?v=3"></script>
