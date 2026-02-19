@@ -119,3 +119,36 @@ button{
     z-index:9999;
 }
 
+
+
+.top-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #222;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+
+.top-bar button{
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    background-color: #ff9800;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.top-bar button:hover{
+    opacity: 0.8;
+}
+
+.contenido{
+    padding: 20px;
+}
+
