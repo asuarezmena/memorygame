@@ -15,7 +15,7 @@ async function login(){
         localStorage.setItem("user",username);
         window.location="menu.html";
     }else{
-        showModal("Login incorrecto", "error");
+        await showModal("Login incorrecto", "error");
     }
 }
 
@@ -34,9 +34,9 @@ async function register(){
     const data = await res.json();
 
     if(data.status=="ok"){
-        showModal("Usuario creado correctamente", "success");
+        await showModal("Usuario creado correctamente", "success");
         window.location="index.html";
     }else{
-        showModal(data.message || "Error al registrar", "error");
+        await showModal(data.message || "Error al registrar", "error");
     }
 }
