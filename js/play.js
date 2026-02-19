@@ -166,7 +166,7 @@ function verificar(){
         .then(res => res.json())
         .then(data => {
     
-            alert("Correcto!");
+            showModal("¡Correcto!", "success");
     
             nivel++;
             localStorage.setItem("level",nivel);
@@ -176,7 +176,7 @@ function verificar(){
         })
         .catch(err=>{
             console.error(err);
-            alert("Error al actualizar nivel");
+            showModal("Error al actualizar nivel", "error");
         });
     
     }else{
@@ -186,7 +186,7 @@ function verificar(){
         
         if(vidas==0){
     
-            alert("Perdiste el nivel");
+            showModal("Perdiste el nivel", "error");
     
             nivel = Math.max(1,nivel-1);
             localStorage.setItem("level",nivel);
@@ -195,7 +195,7 @@ function verificar(){
     
         }else{
     
-            alert("Incorrecto. Intenta nuevamente");
+            showModal("Incorrecto. Intenta nuevamente", "error");
     
             document.getElementById("respuesta").value = "";
     
