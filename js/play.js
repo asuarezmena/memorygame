@@ -150,63 +150,65 @@ async function verificar(){
 
     if(resp == secuencia.join("")){
 
-        fetch(API,{
-          method:"POST",
-          headers:{
-            "Content-Type":"application/x-www-form-urlencoded"
-          },
-          body:"data="+encodeURIComponent(JSON.stringify({
-            action:"updateLevel",
-            username:localStorage.getItem("user"),
-            modo:localStorage.getItem("mode"),
-            level:nivel
-          }))
-        })
-        .then(res => res.json())
-        .then(data => {
-    
+        try {
+
+            const response = await fetch(API,{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/x-www-form-urlencoded"
+                },
+                body:"data="+encodeURIComponent(JSON.stringify({
+                    action:"updateLevel",
+                    username:localStorage.getItem("user"),
+                    modo:localStorage.getItem("mode"),
+                    level:nivel
+                }))
+            });
+
+            const data = await response.json();
+
             await showModal("¡Correcto!", "success");
-    
+
             nivel++;
             localStorage.setItem("level",nivel);
-    
+
             window.location="map.html";
-    
-        })
-        .catch(err=>{
+
+        } catch(err){
+
             console.error(err);
             await showModal("Error al actualizar nivel", "error");
-        });
-    
+
+        }
+
     }else{
 
         vidas--;
         pintarVidas();
         
         if(vidas==0){
-    
+
             await showModal("Perdiste el nivel", "error");
-    
+
             nivel = Math.max(1,nivel-1);
             localStorage.setItem("level",nivel);
-    
+
             window.location="map.html";
-    
+
         }else{
-    
+
             await showModal("Incorrecto. Intenta nuevamente", "error");
-    
+
             document.getElementById("respuesta").value = "";
-    
-            // 🔥 Volver a mostrar la misma secuencia
+
             const config = obtenerConfiguracionNivel();
             mostrarSecuencia(config);
-    
+
         }
     }
-
-
 }
+
+
 
 function pintarVidas(){
  let html="";
