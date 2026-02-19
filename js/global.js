@@ -1,6 +1,15 @@
 function volver(){
-    window.history.back();
+
+    const paginaActual = window.location.pathname.split("/").pop();
+
+    const rutas = {
+        "game.html": "map.html",
+        "map.html": "menu.html"
+    };
+
+    window.location = rutas[paginaActual] || "menu.html";
 }
+
 
 function cerrarSesion(){
     localStorage.clear();
