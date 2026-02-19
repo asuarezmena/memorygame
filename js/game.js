@@ -1,5 +1,26 @@
 
-let nivelActual = parseInt(localStorage.getItem("level")) || 1;
+let nivelActual = 1;
+
+async function cargarNivelUsuario(){
+
+  const username = localStorage.getItem("user");
+  const modo = localStorage.getItem("mode");
+
+  const res = await fetch(
+    API + "?action=getUserLevel&username=" +
+    encodeURIComponent(username) +
+    "&modo=" +
+    encodeURIComponent(modo)
+  );
+
+  const data = await res.json();
+  nivelActual = parseInt(data.level) || 1;
+
+  construirMapa();
+}
+
+
+
  
 document.getElementById("userName").innerText =
 "Jugador: " + localStorage.getItem("user");
@@ -8,8 +29,6 @@ document.getElementById("userName").innerText =
 
 
  
-
-
 
 async function cargarRanking(){
 
@@ -63,38 +82,36 @@ async function cargarRanking(){
 
 
 
-const cont = document.getElementById("nodes");
 
-for(let i=1;i<=20;i++){
+function construirMapa(){
 
-  const node = document.createElement("div");
-  node.className="node";
-  node.innerText=i;
+  const cont = document.getElementById("nodes");
+  cont.innerHTML = "";
 
-  // NIVEL PASADO
-  if(i < nivelActual){
-    node.classList.add("completed");
-  }
+  for(let i=1;i<=20;i++){
 
-  // NIVEL ACTUAL
-  if(i == nivelActual){
-    node.classList.add("active");
-  }
+    const node = document.createElement("div");
+    node.className="node";
+    node.innerText=i;
 
-  // NIVEL BLOQUEADO
-  if(i > nivelActual){
-    node.classList.add("locked");
-  }
-
-  // Permitir entrar solo al nivel actual
-  if(i == nivelActual){
-    node.onclick = ()=>{
-      localStorage.setItem("level", i);
-      window.location="game.html";
+    if(i < nivelActual){
+      node.classList.add("completed");
     }
-  }
 
-  cont.appendChild(node);
+    if(i == nivelActual){
+      node.classList.add("active");
+      node.onclick = ()=>{
+        localStorage.setItem("level", i);
+        window.location="game.html";
+      };
+    }
+
+    if(i > nivelActual){
+      node.classList.add("locked");
+    }
+
+    cont.appendChild(node);
+  }
 }
 
 
@@ -109,6 +126,7 @@ for(let i=1;i<=20;i++){
 
 
 
-
+cargarNivelUsuario();
 setInterval(cargarRanking,3000);
 cargarRanking();
+
