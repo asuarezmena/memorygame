@@ -10,7 +10,6 @@ document.getElementById("nivel").innerText =
 
 
 
-
 function obtenerConfiguracionNivel(){
 
     let digitos = 3;
@@ -103,7 +102,7 @@ function generarSecuencia(config){
 }
 
 
-function esperar(ms){
+async function esperar(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
