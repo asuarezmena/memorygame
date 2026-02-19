@@ -10,6 +10,45 @@ document.getElementById("nivel").innerText =
 
 
 
+
+function obtenerConfiguracionNivel(){
+
+    let digitos = 3;
+
+    if(modo == "intermedio") digitos = 4;
+    if(modo == "dificil") digitos = 6;
+
+    let cantidadNumeros = 1;
+    let tiempoBase = 1000;
+    let vidasIniciales = 3;
+
+    if(nivel > 20){
+        cantidadNumeros = 2;
+        tiempoBase = 800;
+    }
+
+    if(nivel > 40){
+        cantidadNumeros = 3;
+        tiempoBase = 600;
+        vidasIniciales = 2;
+    }
+
+    if(nivel > 60){
+        cantidadNumeros = 4;
+        tiempoBase = 450;
+        vidasIniciales = 1;
+    }
+
+    return {
+        digitos,
+        cantidadNumeros,
+        tiempo: tiempoBase - ((nivel-1)*10),
+        vidas: vidasIniciales
+    };
+}
+
+
+
 function iniciarCuentaAtras(callback){
     const contador = document.getElementById("contador");
     const pantalla = document.getElementById("preStart");
@@ -47,43 +86,70 @@ window.addEventListener("load", () => {
 
 
 
-function generarNumero(){
+let secuencia = [];
 
-    let digits = 3;
+function generarSecuencia(config){
 
-    if(modo=="medio") digits=4;
-    if(modo=="dificil") digits=5;
+    secuencia = [];
 
-    let min = Math.pow(10,digits-1);
-    let max = Math.pow(10,digits)-1;
+    for(let i=0; i < config.cantidadNumeros; i++){
 
-    numeroActual = Math.floor(Math.random()*(max-min)+min);
+        let min = Math.pow(10, config.digitos - 1);
+        let max = Math.pow(10, config.digitos) - 1;
+
+        let numero = Math.floor(Math.random()*(max-min)+min);
+        secuencia.push(numero);
+    }
 }
+
+
+function esperar(ms){
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function mostrarSecuencia(config){
+
+    const numeroDiv = document.getElementById("numero");
+
+    for(let num of secuencia){
+
+        numeroDiv.innerText = num;
+        await esperar(config.tiempo);
+
+        numeroDiv.innerText = "";
+        await esperar(250);
+    }
+
+    numeroDiv.innerText = "???";
+}
+
+
 
 function tiempoNivel(){
     return 1000 - ((nivel-1)*45);
 }
 
-function iniciarNivel(){
 
-    document.getElementById("vidas").innerText =
-    "Vidas: " + vidas;
+async function iniciarNivel(){
 
-    generarNumero();
+    const config = obtenerConfiguracionNivel();
+
+    vidas = config.vidas;
     pintarVidas();
 
-    document.getElementById("numero").innerText = numeroActual;
+    document.getElementById("nivel").innerText = "Nivel " + nivel;
 
-    setTimeout(()=>{
-        document.getElementById("numero").innerText="???";
-    }, tiempoNivel());
+    generarSecuencia(config);
+
+    await mostrarSecuencia(config);
 }
+
 
 function verificar(){
 
     let resp = document.getElementById("respuesta").value;
 
-    if(resp == numeroActual){
+    if(resp == secuencia.join("")){
 
         fetch(API,{
           method:"POST",
