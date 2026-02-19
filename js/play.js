@@ -86,14 +86,18 @@ function verificar(){
     if(resp == numeroActual){
 
         fetch(API,{
-         method:"POST",
-         body:JSON.stringify({
-           action:"updateLevel",
-           username:localStorage.getItem("user"),
-           modo:localStorage.getItem("mode"),
-           level:nivel
-         })
+          method:"POST",
+          headers:{
+            "Content-Type":"application/x-www-form-urlencoded"
+          },
+          body:"data="+encodeURIComponent(JSON.stringify({
+            action:"updateLevel",
+            username:localStorage.getItem("user"),
+            modo:localStorage.getItem("mode"),
+            level:nivel
+          }))
         });
+
 
         alert("Correcto!");
 
