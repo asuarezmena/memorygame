@@ -145,7 +145,7 @@ async function iniciarNivel(){
 }
 
 
-function verificar(){
+async function verificar(){
 
     let resp = document.getElementById("respuesta").value;
 
