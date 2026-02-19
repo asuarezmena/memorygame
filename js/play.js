@@ -214,5 +214,3 @@ function pintarVidas(){
 
 
 
-
-iniciarNivel();
