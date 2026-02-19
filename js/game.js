@@ -1,6 +1,8 @@
 
 let nivelActual = 1;
 
+let nivelMax = 0;
+
 async function cargarNivelUsuario(){
 
   const username = localStorage.getItem("user");
@@ -14,10 +16,12 @@ async function cargarNivelUsuario(){
   );
 
   const data = await res.json();
-  nivelActual = parseInt(data.level) || 1;
+
+  nivelMax = parseInt(data.nivel_max) || 0;
 
   construirMapa();
 }
+
 
 
 
@@ -88,16 +92,28 @@ function construirMapa(){
   const cont = document.getElementById("nodes");
   cont.innerHTML = "";
 
-  for(let i=1;i<=20;i++){
+  const BLOQUE = 20;
+
+  // Calcula cuántos bloques mostrar
+  const bloquesCompletados = Math.floor(nivelMax / BLOQUE);
+
+  // Siempre muestra un bloque más
+  const maxVisible = (bloquesCompletados + 1) * BLOQUE;
+
+  const nivelActual = nivelMax + 1;
+
+  for(let i=1;i<=maxVisible;i++){
 
     const node = document.createElement("div");
     node.className="node";
     node.innerText=i;
 
-    if(i < nivelActual){
+    // Nivel ya completado
+    if(i <= nivelMax){
       node.classList.add("completed");
     }
 
+    // Nivel actual jugable
     if(i == nivelActual){
       node.classList.add("active");
       node.onclick = ()=>{
@@ -106,6 +122,7 @@ function construirMapa(){
       };
     }
 
+    // Nivel bloqueado
     if(i > nivelActual){
       node.classList.add("locked");
     }
@@ -113,6 +130,7 @@ function construirMapa(){
     cont.appendChild(node);
   }
 }
+
 
 
 
